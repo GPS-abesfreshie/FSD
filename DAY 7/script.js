@@ -47,3 +47,10 @@ setTimeout(function( ){
 },2000)
 
 console.log("End")
+
+function print(){
+  setTimeout(()=>{
+    console.log("Welcome Rana");
+  },2000);
+}
+print();

@@ -7,33 +7,21 @@
 
 
 const EventEmitter = require('events');
+const A = new EventEmitter();
 
-// Create a custom EventEmitter class
-class Student extends EventEmitter {
-    registerStudent(name, rollNo) {
-        this.emit('studentRegistered', name, rollNo);
-    }
-
-    logoutStudent() {
-        this.emit('studentLogout');
-    }
-}
-
-// Create an object
-const student = new Student();
-
-// Event 1: Student Registered
-student.on('studentRegistered', (name, rollNo) => {
-    console.log("Student Registered Successfully!");
-    console.log("Student Name:", name);
-    console.log("Roll Number:", rollNo);
+// Event 1: Student Registration
+A.on('studentRegistered', (name, roll_no) => {
+    console.log(`Welcome to class A ${name}`);
+    console.log(`Your roll_no ${roll_no}`);
 });
 
 // Event 2: Student Logout
-student.on('studentLogout', () => {
-    console.log("Student has logged out successfully!");
+A.on('studentLogout', () => {
+    console.log("Student logged out successfully!");
 });
 
-// Trigger events
-student.registerStudent("GPS", 101);
-student.logoutStudent();
+// Trigger first event
+A.emit('studentRegistered', 'Gaurav', 101);
+
+// Trigger second event
+A.emit('studentLogout');
